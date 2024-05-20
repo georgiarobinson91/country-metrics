@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Country {
+  id             Int              @id @default(autoincrement())
+  name           String
+  createdAt      DateTime         @default(now()) @db.Timestamp(0)
+  landCovers     LandCover[]
+  protectedAreas ProtectedAreas[]
+}
+
+model LandCover {
+  id                     Int     @id @default(autoincrement())
+  name                   String
+  area_km2               Float
+  forest                 Float?
+  shrubland              Float?
+  sparse_vegetation      Float?
+  grassland              Float?
+  wetland                Float?
+  water                  Float?
+  permanent_snow_and_ice Float?
+  bare                   Float?
+  agriculture            Float?
+  settlements            Float?
+  no_data                Float?
+  country                Country @relation(fields: [countryId], references: [id])
+  countryId              Int
+}
+
+model ProtectedAreas {
+  id                   Int     @id @default(autoincrement())
+  name                 String
+  area_km2             Float
+  marine_area_km2      Float?
+  marine_perc          Float?
+  terrestrial_area_km2 Float?
+  terrestrial_perc     Float?
+  unprotected_area_km2 Float?
+  unprotected_perc     Float?
+  country              Country @relation(fields: [countryId], references: [id])
+  countryId            Int
+}

@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Country Metrics Search
+
+This project is a web application built with Next.js for the frontend using TypeScript and React, and an Express backend. The purpose of the project is to allow users to search for a country, select it, and retrieve metric data for land cover and protected areas.
+
+## Features
+
+Search for a country by name
+Select a country to view detailed metrics
+Display data on land cover and protected areas
+Responsive and user-friendly interface
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## After making changes to the server
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run dev
+```
 
-## Learn More
+## Technologies used
 
-To learn more about Next.js, take a look at the following resources:
+Next.js
+React
+TypeScript
+TailwindCSS
+Express
+Node.js
+npm
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+As instructed, I didn't include the country-metrics json file in the submission. However, for simplicity I have put it into a module and then imported the data versus using readFiles. Clearly, this isn't how you would do it in production code, where the application would be getting the data from a database.
 
-## Deploy on Vercel
+## Consider how you might make an API to edit the dataset
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The API would have a set of CRUD endpoints
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Create country
+- Get country
+- Update country
+- Delete country
+
+Initial thoughts are that we wouldn't want to give the server a complete country definition with all the metrics and then expect the server to determine what has changed, and so it is likely that we would have some metric endpoints.
+
+- Create metric
+- Get metric
+- Delete metric
+- Update metric
+
+To be discussed
